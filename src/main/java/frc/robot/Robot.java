@@ -16,10 +16,10 @@ public class Robot extends TimedRobot {
 
 
   private final Victor m_leftMotor = new Victor(0);
-  private final Victor m_rightMotor = new Victor(6);
+  private final Victor m_rightMotor = new Victor(3);
   //the F is put in front to show that it is the follower motor
   private final Victor f_leftMotor = new Victor (1);
-  private final Victor f_rightMotor = new Victor (7);
+  private final Victor f_rightMotor = new Victor (4);
   private final DifferentialDrive m_robotDrive =
       new DifferentialDrive(m_leftMotor::set, m_rightMotor::set);
   private final XboxController m_driverController = new XboxController(0);
