@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 public class Robot extends TimedRobot {
 
 
+  //we set the the motor controlers here and not in the robot container because it saves space
   private final Victor m_leftMotor = new Victor(0);
   private final Victor m_rightMotor = new Victor(3);
   //the F is put in front to show that it is the follower motor
@@ -56,8 +57,10 @@ public class Robot extends TimedRobot {
     // Drive with split arcade drive.
     // That means that the Y axis of the left stick moves forward
     // and backward, and the X of the right stick turns left and right.
+    //this allows the robot to brake when you hold the leftTrigger
     if(m_driverController.getLeftTriggerAxis() < .5)
     {
+      //this makes the robot remove the speed limiter if yu press the right Trigger
       if(m_driverController.getRightTriggerAxis() > .5)
       {
         m_robotDrive.arcadeDrive(-m_driverController.getRawAxis(1), -m_driverController.getRawAxis(4));
