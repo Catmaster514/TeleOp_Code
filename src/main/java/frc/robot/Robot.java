@@ -51,10 +51,27 @@ public class Robot extends TimedRobot {
   public void disabledPeriodic() {}
 
   @Override
-  public void teleopPeriodic() {
+  public void teleopPeriodic() 
+  {
     // Drive with split arcade drive.
     // That means that the Y axis of the left stick moves forward
     // and backward, and the X of the right stick turns left and right.
-    m_robotDrive.arcadeDrive(-m_driverController.getRawAxis(1), -m_driverController.getRawAxis(4));
+    if(m_driverController.getLeftTriggerAxis() < .5)
+    {
+      if(m_driverController.getRightTriggerAxis() > .5)
+      {
+        m_robotDrive.arcadeDrive(-m_driverController.getRawAxis(1), -m_driverController.getRawAxis(4));
+      }
+      else
+      {
+        m_robotDrive.arcadeDrive(-m_driverController.getRawAxis(1)*.6, -m_driverController.getRawAxis(4)*.6);
+      }
+    } 
+    else
+    {
+      m_robotDrive.stopMotor();
+    }
+
+    
   }
 }
